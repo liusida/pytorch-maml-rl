@@ -95,24 +95,27 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Reinforcement learning with '
         'Model-Agnostic Meta-Learning (MAML) - Train')
 
-    parser.add_argument('--config', type=str, required=True,
+    parser.add_argument('--config', type=str,
+        default="configs/maml/halfcheetah-vel.yaml",
         help='path to the configuration file.')
 
     # Miscellaneous
     misc = parser.add_argument_group('Miscellaneous')
     misc.add_argument('--output-folder', type=str,
+        default="output",
         help='name of the output folder')
     misc.add_argument('--seed', type=int, default=None,
         help='random seed')
     misc.add_argument('--num-workers', type=int, default=mp.cpu_count() - 1,
         help='number of workers for trajectories sampling (default: '
              '{0})'.format(mp.cpu_count() - 1))
-    misc.add_argument('--use-cuda', action='store_true',
-        help='use cuda (default: false, use cpu). WARNING: Full upport for cuda '
-        'is not guaranteed. Using CPU is encouraged.')
+    # misc.add_argument('--use-cuda', action='store_true',
+    #     help='use cuda (default: false, use cpu). WARNING: Full upport for cuda '
+    #     'is not guaranteed. Using CPU is encouraged.')
 
     args = parser.parse_args()
-    args.device = ('cuda' if (torch.cuda.is_available()
-                   and args.use_cuda) else 'cpu')
+    # args.device = ('cuda' if (torch.cuda.is_available()
+    #                and args.use_cuda) else 'cpu')
+    args.device = "cpu"
 
     main(args)

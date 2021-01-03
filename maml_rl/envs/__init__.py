@@ -22,35 +22,37 @@ register(
 
 # Mujoco
 # ----------------------------------------
+# physics_engine = "mujoco"
+physics_engine = "pybullet"
 
 register(
     'AntVel-v2',
     entry_point='maml_rl.envs.utils.wrappers:mujoco_wrapper',
-    kwargs={'entry_point': 'maml_rl.envs.mujoco.ant:AntVelEnv'}
+    kwargs={'entry_point': f'maml_rl.envs.{physics_engine}.ant:AntVelEnv'}
 )
 
 register(
     'AntDir-v2',
     entry_point='maml_rl.envs.utils.wrappers:mujoco_wrapper',
-    kwargs={'entry_point': 'maml_rl.envs.mujoco.ant:AntDirEnv'}
+    kwargs={'entry_point': f'maml_rl.envs.{physics_engine}.ant:AntDirEnv'}
 )
 
 register(
     'AntPos-v1',
     entry_point='maml_rl.envs.utils.wrappers:mujoco_wrapper',
-    kwargs={'entry_point': 'maml_rl.envs.mujoco.ant:AntPosEnv'}
+    kwargs={'entry_point': f'maml_rl.envs.{physics_engine}.ant:AntPosEnv'}
 )
 
 register(
     'HalfCheetahVel-v2',
     entry_point='maml_rl.envs.utils.wrappers:mujoco_wrapper',
-    kwargs={'entry_point': 'maml_rl.envs.mujoco.half_cheetah:HalfCheetahVelEnv'}
+    kwargs={'entry_point': f'maml_rl.envs.{physics_engine}.half_cheetah:HalfCheetahVelEnv'}
 )
 
 register(
     'HalfCheetahDir-v2',
     entry_point='maml_rl.envs.utils.wrappers:mujoco_wrapper',
-    kwargs={'entry_point': 'maml_rl.envs.mujoco.half_cheetah:HalfCheetahDirEnv'}
+    kwargs={'entry_point': f'maml_rl.envs.{physics_engine}.half_cheetah:HalfCheetahDirEnv'}
 )
 
 # 2D Navigation
