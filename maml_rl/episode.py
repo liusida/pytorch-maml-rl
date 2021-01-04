@@ -120,6 +120,7 @@ class BatchEpisodes(object):
         return self._logs
 
     def log(self, key, value):
+        # print(f"BatchEpisodes: log {key} {value}")
         self._logs[key] = value
 
     def compute_advantages(self, baseline, gae_lambda=1.0, normalize=True):

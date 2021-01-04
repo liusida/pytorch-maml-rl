@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import gym
 import torch
 import json
@@ -81,6 +83,7 @@ def main(args):
                     num_iterations=num_iterations,
                     train_returns=get_returns(train_episodes[0]),
                     valid_returns=get_returns(valid_episodes))
+        pprint(logs)
 
         # Save policy
         if args.output_folder is not None:
@@ -106,7 +109,7 @@ if __name__ == '__main__':
         help='name of the output folder')
     misc.add_argument('--seed', type=int, default=None,
         help='random seed')
-    misc.add_argument('--num-workers', type=int, default=mp.cpu_count() - 1,
+    misc.add_argument('--num-workers', type=int, default=mp.cpu_count(),
         help='number of workers for trajectories sampling (default: '
              '{0})'.format(mp.cpu_count() - 1))
     # misc.add_argument('--use-cuda', action='store_true',

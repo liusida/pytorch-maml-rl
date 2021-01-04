@@ -2,6 +2,8 @@ import numpy as np
 
 from pybullet_envs.gym_locomotion_envs import HalfCheetahBulletEnv as HalfCheetahEnv_
 
+# global_steps = 0
+
 class HalfCheetahEnv(HalfCheetahEnv_):
     def _get_obs(self):
         return self.robot.calc_state()
@@ -59,6 +61,10 @@ class HalfCheetahVelEnv(HalfCheetahEnv):
         super(HalfCheetahVelEnv, self).__init__()
 
     def step(self, action):
+        # global global_steps
+        # global_steps += 1
+        # if global_steps % 100 == 0:
+        #     print(f"global_steps: {global_steps} x 7")
         if self.sim is None:
             self.sim = self._p
         xposbefore = self.robot.body_xyz[0]
@@ -83,6 +89,7 @@ class HalfCheetahVelEnv(HalfCheetahEnv):
         return tasks
 
     def reset_task(self, task):
+        # print("reset task")
         self._task = task
         self._goal_vel = task['velocity']
 
